@@ -1,0 +1,38 @@
+---
+- name: Reinstall
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Install pkgs
+      package:
+        name: {{ item }}
+        state: latest
+      with_items:
+        - docker
+        - hexchat
+        - htop
+        - krb5-workstation
+        - libselinux-python
+        - openldap-clients
+        - pam_krb5
+        - python2-bvirtualenv
+        - qemu-img
+        - redhat-rpm-configa
+        - sshpass
+        - sssd
+        - thunderbird
+        - tmux
+        - unzip
+        - vagrant
+        - vagrant-libvirt
+        - vim-enhanced
+        - virt-manager
+
+    - name: Add vagrant polkit config
+      template:
+        src: vagrant.pkla.j2
+        dest: /etc/polkit-1/localauthority/50-local.d/vagrant.pkla
+        owner: root
+        group: root
+        mode: 0644
