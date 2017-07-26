@@ -18,7 +18,7 @@
         - pam_krb5
         - python2-bvirtualenv
         - qemu-img
-        - redhat-rpm-configa
+        - redhat-rpm-config
         - sshpass
         - sssd
         - thunderbird
